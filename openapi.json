@@ -1,0 +1,112 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Serie A Predictor API",
+    "version": "1.0.0",
+    "description": "API per fornire dati sulle partite e predizioni della Serie A."
+  },
+  "servers": [
+    {
+      "url": "https://tuodominio.com/api",
+      "description": "Server principale"
+    }
+  ],
+  "paths": {
+    "/fixtures": {
+      "get": {
+        "summary": "Ottieni le prossime partite della Serie A",
+        "description": "Recupera l'elenco delle partite programmate per la Serie A.",
+        "parameters": [
+          {
+            "name": "season",
+            "in": "query",
+            "required": true,
+            "description": "La stagione desiderata (es: 2024).",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "team",
+            "in": "query",
+            "required": false,
+            "description": "ID del team per filtrare le partite.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Risposta con i dettagli delle partite.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "fixtures": [
+                    {
+                      "date": "2025-01-07",
+                      "home_team": "Inter",
+                      "away_team": "Juventus",
+                      "stadium": "San Siro",
+                      "score": null
+                    },
+                    {
+                      "date": "2025-01-08",
+                      "home_team": "Milan",
+                      "away_team": "Roma",
+                      "stadium": "San Siro",
+                      "score": null
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/predict": {
+      "get": {
+        "summary": "Predizione del risultato di una partita",
+        "description": "Fornisce una predizione basata sui dati storici e attuali delle squadre.",
+        "parameters": [
+          {
+            "name": "home_team",
+            "in": "query",
+            "required": true,
+            "description": "Il nome della squadra di casa.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "away_team",
+            "in": "query",
+            "required": true,
+            "description": "Il nome della squadra ospite.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Risultato previsto della partita.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "prediction": {
+                    "home_team": "Inter",
+                    "away_team": "Juventus",
+                    "predicted_score": "2-1",
+                    "confidence": "85%"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
