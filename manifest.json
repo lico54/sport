@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_model": "serie_a_predictor",
+  "name_for_human": "Serie A Predictor",
+  "description_for_model": "Plugin per fornire analisi e predizioni sulle partite della Serie A basate su dati storici e attuali.",
+  "description_for_human": "Predizioni Serie A con dati e statistiche in tempo reale.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://lico54.github.io/sport/openapi.json"
+  },
+  "logo_url": "https://tuonome.github.io/logo.png",
+  "contact_email": "digitalboost.ita@gmail.com",
+  "legal_info_url": "https://lico54.github.io/sport/openapi.json"
+}
